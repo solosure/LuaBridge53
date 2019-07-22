@@ -45,7 +45,10 @@
 
 #ifndef LUALIBRARY_SOURCE
 
-#if LUABRIDGEDEMO_LUA_VERSION >= 502
+#if LUABRIDGEDEMO_LUA_VERSION >= 503
+  #include "Lua.5.3.5/src/lua.hpp"
+
+#elif LUABRIDGEDEMO_LUA_VERSION >= 502
   #include "Lua.5.2.0/src/lua.hpp"
 
 #elif LUABRIDGEDEMO_LUA_VERSION >= 501

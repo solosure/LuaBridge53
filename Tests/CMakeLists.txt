@@ -60,6 +60,21 @@ target_compile_options (Lua52
 
 target_include_directories (Lua52 PRIVATE .)
 
+# Lua 5.3.5, C++11
+
+file (GLOB_RECURSE LUABRIDGE_TEST_LUA53_FILES
+  Lua/LuaLibrary.h
+  Lua/LuaLibrary5.3.5.cpp
+)
+
+add_library (Lua53 ${LUABRIDGE_TEST_LUA53_FILES})
+
+target_compile_options (Lua53
+  PUBLIC -DLUABRIDGEDEMO_LUA_VERSION=503
+)
+
+target_include_directories (Lua53 PRIVATE .)
+
 
 macro (add_test_app LUABRIDGE_TEST_NAME LUABRIDGE_TEST_LUA_LIBRARY)
 
@@ -85,6 +100,8 @@ add_test_app (Tests51 Lua51)
 
 add_test_app (Tests52 Lua52)
 
+add_test_app (Tests53 Lua53)
+
 
 # Pre C++11
 
@@ -93,3 +110,6 @@ target_compile_definitions (Tests51L PRIVATE LUABRIDGE_NO_CXX11)
 
 add_test_app (Tests52L Lua52)
 target_compile_definitions (Tests52L PRIVATE LUABRIDGE_NO_CXX11)
+
+add_test_app (Tests53L Lua53)
+target_compile_definitions (Tests53L PRIVATE LUABRIDGE_NO_CXX11)
